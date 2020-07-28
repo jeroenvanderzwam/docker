@@ -1,0 +1,10 @@
+sudo: required
+languange: generic
+services:
+    - docker
+
+before_install:
+    - docker build -t jeroenvanderzwam/docker -f Docerfile.dev .
+
+script:
+    - docker run -e CI=true jeroenvanderzwam/docker npm run test
